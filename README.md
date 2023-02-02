@@ -11,8 +11,7 @@ for (var i = 0; i < 3; i++) {
 ```
 
 You might be surprised when we actually try it. The reason this code does not
-behave as you might expect after some experience working with JavaScript is due
-to a language feature called closures.
+behave as you might expect is due to a language feature called closures.
 
 Closures are a classic topic in a JavaScript interview, but they have a
 reputation for being challenging to understand. Today we'll dive into what they
@@ -71,9 +70,30 @@ to closures.
 As we can see, JavaScript PRESERVES the `mySpecialNumber` variable even after
 the outer function is done executing. This is due to closures. When we call the
 inner function after the outer function is done executing, the inner function
-still has access to the outer function's `mySpecialNumber` variable.
+still has access to the outer function's `mySpecialNumber` variable. 🤯
 
 ### A More Interesting Example
+
+Let's kick things up a notch and take a look at two separate closures created by
+inner functions from the same outer function. We'll make an adder function
+factory.
+
+```js
+function makeAdder(num1) {
+	return function (num2) {
+		return num1 + num2;
+	};
+}
+
+const addThree = makeAdder(3); // this creates a closure for the addThree function
+const addSeven = makeAdder(7); // this creates a closure for the addSeven function
+
+console.log(addThree(5)); // 8
+console.log(addSeven(10)); // 17
+```
+
+Notice that even though `addThree` and `addSeven` are created from the same
+outer function,
 
 ### Document Button
 
