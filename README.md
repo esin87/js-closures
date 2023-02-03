@@ -11,7 +11,7 @@ for (var i = 0; i < 3; i++) {
 ```
 
 You might be surprised when we actually try it. The reason this code does not
-behave as you might expect is due to a language feature called closures.
+behave as you might expect has to do with a language feature called closures.
 
 Closures are a classic topic in a JavaScript interview, but they have a
 reputation for being challenging to understand. Today we'll dive into what they
@@ -28,6 +28,9 @@ are, and take a look at some examples that illuminate how they work.
 A closure is the lexical environment created by a function with references to
 its surrounding variables. Closures give us access to variables in an outer
 function's scope from an inner function.
+
+Remember that we can reach out into greater scopes in JavaScript, and closures
+make use of this scoping rule.
 
 JavaScript creates closures every time a function is created. In other words,
 whenever a function is defined, a closure gets created.
@@ -93,11 +96,39 @@ console.log(addSeven(10)); // 17
 ```
 
 Notice that even though `addThree` and `addSeven` are created from the same
-outer function,
+outer function, they create their own lexical environments, or closures. In the
+`addThree` closure, the value of `num1` is 3, and in the `addSeven` closure, the
+value of `num1` is 7.
+
+Even after the `makeAdder` functions have been executed, the values of those
+variables that are being referenced by the inner functions continue to live on
+in the program, in those separate closures. Pretty cool, right?!
 
 ### Document Button
 
+Another example that illustrates closures is this code snippet:
+
+```js
+for (var i = 0; i < 5; i++) {
+	var btn = document.createElement('button');
+	btn.appendChild(document.createTextNode('Button ' + i));
+	btn.addEventListener('click', function () {
+		console.log(i);
+	});
+	document.body.appendChild(btn);
+}
+```
+
+At first glance, what do you think this code does? What do you think will log
+when the buttons are clicked?
+
+You probably correctly guessed that five buttons will be created and appended to
+the document body, `Button 0`, `Button 1`, etc. But you might be surprised to
+find out that the buttons will all log 5. Why that counterintuitive behavior?
+
 ### Revisiting the Set Timeout Code
+
+Now that we've taken a look at these examples, let's revisit the
 
 ## References
 
