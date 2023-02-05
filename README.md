@@ -126,9 +126,36 @@ You probably correctly guessed that five buttons will be created and appended to
 the document body, `Button 0`, `Button 1`, etc. But you might be surprised to
 find out that the buttons will all log 5. Why that counterintuitive behavior?
 
+The callback function being passed to the event listener is an inner function
+bundled with references to its surrounding lexical environment. The for-loop
+creates five buttons, and thus five event listeners. Each of those five event
+listeners has its own callback function attached to it, and thus, we have five
+separate closures. However, the use of `var` in a for-loop causes the variable
+`i` to be scoped globally, not contained in the closure.
+
+Thus, the value of five accessible to the event listeners is the global value of
+5 after the for-loop is done executing.
+
+**💡 How can we fix this so that the buttons log the correct numbers?**
+
 ### Revisiting the Set Timeout Code
 
-Now that we've taken a look at these examples, let's revisit the
+Now that we've taken a look at these examples, let's revisit the example from
+the introduction.
+
+```js
+for (var i = 0; i < 3; i++) {
+	setTimeout(() => {
+		console.log(i);
+	}, i * 1000);
+}
+```
+
+Using what we've talked about today, answer the following questions.
+
+1. Why does the code log the number "4" four times to the console? Use the
+   concept of closures in your response.
+2. What are some ways we can modify the code to produce the expected result?
 
 ## References
 
