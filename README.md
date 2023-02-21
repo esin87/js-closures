@@ -26,7 +26,7 @@ are, and take a look at some examples that illuminate how they work.
 ## What are Closures?
 
 A closure is the lexical environment created by a function with references to
-its surrounding variables. Closures give us access to variables in an outer
+its surrounding variables. Closures give us access to variables defined in an outer
 function's scope from an inner function.
 
 Remember that we can reach out into greater scopes in JavaScript, and closures
