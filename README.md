@@ -51,10 +51,10 @@ printNumber(); // 123
 console.log(num); // ReferenceError: num is not defined
 ```
 
-We can access `mySpecialNum` within the `printNumber()` scope, but outside of
-that function, `mySpecialNum` is not a known variable.
+We can access `num` within the `printNumber()` scope, but outside of that
+function, `num` is not a known variable.
 
-That means that scope isolates variables to their own space. This is useful,
+That means that scope isolates variables to their own namespace. This is useful,
 because it allows us to reuse common variable names without collisions.
 
 ```js
