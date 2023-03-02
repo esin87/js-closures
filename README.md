@@ -333,7 +333,7 @@ for (var i = 0; i < 3; i++) {
 
 Using what we've talked about today, answer the following questions.
 
-1. Why does the code log the number "4" four times to the console? Use the
+1. Why does the code log the number "3" three times to the console? Use the
    concept of closures in your response.
 
 <!-- This code executes in two phases.
