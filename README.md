@@ -254,7 +254,7 @@ function createStack() {
 	return {
 		items: [],
 		push(item) {
-			this.stack.push(item);
+			this.items.push(item);
 		},
 		pop() {
 			return this.items.pop();
